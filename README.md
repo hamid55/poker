@@ -1,4 +1,4 @@
-my_project_name
+Project Poker
 ===============
 
-A Symfony project created on November 28, 2017, 10:30 am.
+* A Symfony project created on November 13.02.2018
