@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Raum bearbeiten</h1>
+
+    {{ form_start(edit_form) }}
+        {{ form_widget(edit_form) }}
+        <br /><input class="btn btn-success" type="submit" value="Speichern" />
+    {{ form_end(edit_form) }}
+
+
+
+    <br /><a href="{{ path('room_index') }}">Zurück zur Liste</a>
+
+    {{ form_start(delete_form) }}
+        <br /><input class="btn btn-danger" type="submit" value="Löschen">
+    {{ form_end(delete_form) }}
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Raum erstellen</h1>
+
+    {{ form_start(form) }}
+
+        {{ form_widget(form) }}
+        <br /><input class="btn btn-success" type="submit" value="Erstellen" />
+
+    {{ form_end(form) }}
+
+    <br />
+        <a href="{{ path('room_index') }}">Zurück zur Liste</a>
+
+{% endblock %}

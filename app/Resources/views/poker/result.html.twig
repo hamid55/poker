@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h2 class="page-header">Teilnahme:</h2>
+
+    <b>Raum: {{ room }} </b>
+
+    <hr>
+    {% for poker in pokers %}
+        <input type="button" value="{{ poker.user }}" class="btn btn-lg btn-default highlight_black stylish" />
+    {% endfor %}
+
+    <hr>
+    <br/><br/>
+    <form action="result" method="post">
+        <input type="hidden" value="{{ room }}" name="room">
+        <input type="submit" value="Seite Neu laden" name="reload" class="btn btn-default " />
+    </form>
+    {% if pokers %}
+        <br/><br/>
+        <form action="show" method="post">
+            <input type="hidden" value="{{ room }}" name="room">
+            <input type="submit" value="Auswerten" name="auswerten" class="btn btn-success " />
+        </form>
+    {% endif %}
+    <br/><br/>
+    <a href="{{ path('poker_box') }}" class="btn btn-default "> Zurück </a>
+
+{% endblock %}

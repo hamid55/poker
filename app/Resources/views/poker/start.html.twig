@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h2 class="page-header">Starti</h2>
+
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <p>Hallo {{ app.user.username }}</p>
+        <p>Bitte benutzen Sie Ihnen zur Verfügung gestellte Menüpunkte</p>
+    {% endif %}
+
+{% endblock %}

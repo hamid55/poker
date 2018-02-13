@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h1>Räume</h1>
+    <p>
+        <a href="{{ path('room_new') }}">Raum erstellen</a>
+    </p>
+
+    <table class="table table-striped">
+        {% if rooms %}
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Werte</th>
+                <th>Aktionen</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% else %}
+            Keine Räume vorhanden
+        {% endif %}
+        {% for room in rooms %}
+            <tr>
+                <td><a href="{{ path('room_show', { 'id': room.id }) }}">{{ room.id }}</a></td>
+                <td>{{ room.name }}</td>
+                <td>{% if room.digits %}{{ room.digits|join(', ') }}{% endif %}</td>
+                <td>
+
+                    <a class="btn btn-success" href="{{ path('room_show', { 'id': room.id }) }}">Zeigen</a>
+
+                    <a class="btn btn-default" href="{{ path('room_edit', { 'id': room.id }) }}">Bearbeiten</a>
+
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

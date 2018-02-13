@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h2 class="page-header">Auswertung:</h2>
+
+    <b>Raum: {{ room }} </b>
+    <hr>
+    {% for poker in pokers %}
+        <input type="button" value="{{ poker.user }} ( {{ poker.choiceDigit }} )".
+            {% if( poker.choiceDigit == zahl_min ) %}.
+            class="btn btn-lg btn-info highlight_black stylish".
+            {% elseif ( poker.choiceDigit == zahl_max ) %}.
+            class="btn btn-lg btn-danger highlight_black stylish".
+            {% else %}.
+            class="btn btn-lg btn-default highlight_black stylish".
+            {% endif %}
+        " />
+    {% endfor %}
+
+    <hr>
+    <br/><br/>
+    {% if anz != '' %}
+        <table class="table">
+            <tbody>
+            <tr class="info">
+                <td>Min</td>
+                <td>{{ zahl_min }}</td>
+            </tr>
+            <tr class="danger">
+                <td>Max</td>
+                <td>{{ zahl_max }}</td>
+            </tr>
+            <tr class="success">
+                <td>Durchschnitt</td>
+                <td><b>{{ zahl_avg }}</b></td>
+            </tr>
+            </tbody>
+        </table>
+        <br/><br/>
+    {% endif %}
+    <form action="" method="post">
+        <input type="hidden" value="{{ room }}" name="room">
+        <input type="submit" value="Seite Neu laden" name="reload" class="btn btn-default " />
+    </form>
+    <br/><br/>
+    <form action="result" method="post">
+        <input type="hidden" value="{{ room }}" name="room">
+        <input type="hidden" value="reset" name="choice">
+        <input type="hidden" value="neu" name="neu">
+        <input type="submit" value="Neu abstimmen" class="btn btn-danger " />
+    </form>
+    <br/><br/>
+    <form action="result" method="post">
+        <input type="hidden" value="{{ room }}" name="room">
+        <input type="submit" value="Zurück" name="back" class="btn btn-default " />
+    </form>
+
+
+{% endblock %}

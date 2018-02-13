@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h2 class="page-header">POKER ZAHLEN</h2>
+
+    <b>Raum: {{ room }} </b>
+    <br /><br />
+
+    {% for digit in digits %}
+        <a href="{{ path('poker_digit', { 'choice': digit, 'room': room }) }} ".
+            {% if( choice == digit ) %}.
+                class="btn btn-lg btn-success highlight_black stylish".
+            {% else %}.
+                class="btn btn-lg btn-default highlight_black stylish".
+            {% endif %}.
+        > {{ digit }} </a>
+    {% endfor %}
+
+    <br /><br />
+    {% if back == 'Neu'%}
+        <a href="{{ path('poker_digit', { 'back': back, 'room': room }) }}" class="btn btn-default"> {{ back }} </a>
+    {% else %}
+        <form action="room" method="post">
+            <input type="submit" value="Zurück" name="back" class="btn btn-default " />
+        </form>
+    {% endif %}
+
+{% endblock %}

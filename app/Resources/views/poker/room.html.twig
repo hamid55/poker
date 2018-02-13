@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h2 class="page-header">Raum Auswahl</h2>
+
+    <tbody>
+    {% for room in rooms %}
+
+        <form action="digit" method="post">
+            <input type="hidden" value="{{ room.name }}" name="room">
+            <input type="submit" value="{{ room.name }}" class="btn btn-lg btn-default highlight_black stylish" />
+        </form>
+        <hr>
+    {% endfor %}
+    <br/>
+    <a href="{{ path('poker_start') }}" class="btn btn-default "> Zurück </a>
+    </tbody>
+
+{% endblock %}
